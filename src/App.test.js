@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+// Подключить сначала
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
@@ -36,6 +37,7 @@ describe("events", () => {
     expect(onChange).toHaveBeenCalledTimes(2);
   });
 
+  // Кнопка Tab
   it("focus", () => {
     const { getAllByTestId } = render(
       <div>
@@ -62,10 +64,10 @@ describe("events", () => {
       </select>
     );
 
-    userEvent.selectOptions(getByRole('combobox'), "1");
+    userEvent.selectOptions(getByRole("combobox"), "1");
     expect(getByText("A").selected).toBeTruthy();
 
-    userEvent.selectOptions(getByRole('combobox'), "2");
+    userEvent.selectOptions(getByRole("combobox"), "2");
     expect(getByText("B").selected).toBeTruthy();
     expect(getByText("A").selected).toBeFalsy();
   });
