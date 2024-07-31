@@ -32,11 +32,16 @@ Assertive Functions:
 describe("App", () => {
   it("renders App component", async () => {
     render(<App />);
-    // expect(screen.queryByText(/Searches for JavaScript/)).toBeNull();
+
+    // 1
+    expect(screen.queryByText(/Searches for JavaScript/)).toBeInTheDocument();
+
+    // 2 асинхронный запрос
     expect(screen.queryByText(/Logged in as/)).toBeNull();
     screen.debug();
     expect(await screen.findByText(/Logged in as/)).toBeInTheDocument();
     screen.debug();
+
     // Assertive Functions Examples:
     expect(screen.getByAltText(/search image/)).toHaveClass("image");
     expect(screen.getByLabelText(/search/i)).not.toBeRequired();
