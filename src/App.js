@@ -13,7 +13,7 @@ const Search = ({ value, onChange, children }) => (
       type="text"
       value={value}
       onChange={onChange}
-      // required
+      required
     />
   </div>
 );

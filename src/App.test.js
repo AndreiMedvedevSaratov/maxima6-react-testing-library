@@ -14,9 +14,7 @@ Search variants:
 - getByAltText            - queryByAltText            - findByAltText
 - getByDisplayValue       - queryByDisplayValue       - findByDisplayValue
 - getAllBy                - queryAllBy                - findAllBy
-*/
 
-/*
 Assertive Functions:
 
 - toBeDisabled            - toBeEnabled               - toBeEmpty
@@ -34,7 +32,9 @@ describe("App", () => {
     render(<App />);
 
     // 1
-    expect(screen.queryByText(/Searches for JavaScript/)).toBeInTheDocument();
+    expect(
+      screen.queryByText(/Searches for JavaScript/)
+    ).not.toBeInTheDocument();
 
     // 2 асинхронный запрос
     expect(screen.queryByText(/Logged in as/)).toBeNull();
@@ -44,8 +44,8 @@ describe("App", () => {
 
     // Assertive Functions Examples:
     expect(screen.getByAltText(/search image/)).toHaveClass("image");
-    expect(screen.getByLabelText(/search/i)).not.toBeRequired();
+    expect(screen.getByLabelText(/search/i)).toBeRequired();
     expect(screen.getByLabelText(/search/i)).toBeEmpty();
-    expect(screen.getByLabelText(/search/i)).toHaveAttribute("id");
+    expect(screen.getByLabelText(/search/i)).toHaveAttribute("ids");
   });
 });
