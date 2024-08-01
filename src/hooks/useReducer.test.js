@@ -31,9 +31,13 @@ describe("useReducer", () => {
   it("hook testing", () => {
     const { getByText, getByRole } = render(<Counter />);
     expect(getByRole("heading")).toHaveTextContent("0");
+
     userEvent.click(getByText("+1"));
+
     expect(getByRole("heading")).toHaveTextContent("1");
+
     userEvent.click(getByText("-1"));
+
     expect(getByRole("heading")).toHaveTextContent("0");
   });
 });

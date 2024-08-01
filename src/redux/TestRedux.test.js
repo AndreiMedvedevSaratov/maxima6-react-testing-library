@@ -20,6 +20,7 @@ const renderWithRedux = (
 describe("Redux testing", () => {
   it("checks initial state is equal to 0", () => {
     const { getByRole } = renderWithRedux(<TestRedux />);
+
     expect(getByRole("heading")).toHaveTextContent("0");
   });
 
@@ -27,7 +28,9 @@ describe("Redux testing", () => {
     const { getByRole, getByText } = renderWithRedux(<TestRedux />, {
       initialState: { count: 5 },
     });
+
     userEvent.click(getByText("+1"));
+
     expect(getByRole("heading")).toHaveTextContent("6");
   });
 
@@ -35,7 +38,9 @@ describe("Redux testing", () => {
     const { getByRole, getByText } = renderWithRedux(<TestRedux />, {
       initialState: { count: 100 },
     });
+
     userEvent.click(getByText("-1"));
+
     expect(getByRole("heading")).toHaveTextContent("99");
   });
 });
