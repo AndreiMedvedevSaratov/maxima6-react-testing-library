@@ -36,6 +36,7 @@ describe("Context", () => {
         <ConsumerComponent />
       </AuthProvider>
     );
+
     expect(getByText(/^Message:/)).toHaveTextContent("Message: Please, log in");
   });
 
@@ -46,8 +47,10 @@ describe("Context", () => {
       </AuthProvider>
     );
     expect(getByText(/^Message:/)).toHaveTextContent("Message: Please, log in");
+
     userEvent.click(getByRole("button"));
     expect(getByText(/^Message:/)).toHaveTextContent("Message: Welcome!");
+
     userEvent.click(getByRole("button"));
     expect(getByText(/^Message:/)).toHaveTextContent("Message: Please, log in");
   });

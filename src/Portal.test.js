@@ -12,6 +12,7 @@ const Modal = ({ onClose, children }) => {
 
   useEffect(() => {
     modalRoot.appendChild(el);
+
     return () => modalRoot.removeChild(el);
   });
 
@@ -29,13 +30,17 @@ const Modal = ({ onClose, children }) => {
 describe("Portal", () => {
   it("modal shows the children and a close button", () => {
     const handleClose = jest.fn();
+
     const { getByText } = render(
       <Modal onClose={handleClose}>
         <div>My portal</div>
       </Modal>
     );
+
     expect(getByText("My portal")).toBeInTheDocument();
+
     userEvent.click(getByText(/close/i));
+
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
@@ -45,8 +50,11 @@ describe("Portal", () => {
         <div>My portal</div>
       </Modal>
     );
+
     expect(getByText("My portal")).toBeInTheDocument();
+
     unmount();
+
     expect(queryByText("My portal")).not.toBeInTheDocument();
   });
 });
