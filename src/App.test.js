@@ -18,6 +18,7 @@ describe("App", () => {
 
     const items = await findAllByRole("listitem");
     expect(items).toHaveLength(2);
+
     // Additional
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith(

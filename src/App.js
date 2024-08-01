@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const URL = "http://hn.algolia.com/api/v1/search";
