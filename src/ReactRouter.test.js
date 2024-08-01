@@ -63,6 +63,7 @@ const RouterComponent = () => (
 describe("React Router", () => {
   it("should render the home page", () => {
     const history = createMemoryHistory();
+
     const { container, getByTestId } = render(
       <Router history={history}>
         <RouterComponent />
@@ -70,9 +71,12 @@ describe("React Router", () => {
     );
 
     // const { container, getByTestId } = renderWithRouter(<RouterComponent />);
+
     const navbar = getByTestId("navbar");
     const link = getByTestId("home-link");
+
     expect(container.innerHTML).toMatch("Home page");
+
     expect(navbar).toContainElement(link);
   });
 
@@ -86,12 +90,14 @@ describe("React Router", () => {
 
     // const { container, getByTestId } = renderWithRouter(<RouterComponent />);
     fireEvent.click(getByTestId("contact-link"));
+
     expect(container.innerHTML).toMatch("John Doe");
   });
 
   it("should navigate to error page if route is wrong", () => {
     const history = createMemoryHistory();
     history.push("/wrong-route");
+
     const { container } = render(
       <Router history={history}>
         <RouterComponent />
@@ -107,6 +113,7 @@ describe("React Router", () => {
   it("rendering a component that uses withRouter", () => {
     const history = createMemoryHistory();
     const route = "/some-route";
+
     history.push(route);
     const { getByTestId } = render(
       <Router history={history}>
